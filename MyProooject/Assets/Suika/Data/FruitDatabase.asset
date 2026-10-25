@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db31e63dfec1ad8488ff8428f13680bd, type: 3}
+  m_Name: FruitDatabase
+  m_EditorClassIdentifier: Assembly-CSharp::Suika.FruitDatabase
+  fruits:
+  - displayName: "\uCCB4\uB9AC"
+    radius: 0.26
+    color: {r: 0.9098039, g: 0.19607843, b: 0.23529412, a: 1}
+    score: 1
+    sprite: {fileID: 21300000, guid: a958d6313f5c24f498895c993bb6fa4c, type: 3}
+  - displayName: "\uB538\uAE30"
+    radius: 0.36
+    color: {r: 1, g: 0.3019608, b: 0.3529412, a: 1}
+    score: 3
+    sprite: {fileID: 21300000, guid: 6e2270d8d890a984ab18b94de0b79ecc, type: 3}
+  - displayName: "\uD3EC\uB3C4"
+    radius: 0.48
+    color: {r: 0.57254905, g: 0.34117648, b: 0.8392157, a: 1}
+    score: 6
+    sprite: {fileID: 21300000, guid: bcc73c2a06bb9a943bb49c9047132eca, type: 3}
+  - displayName: "\uD55C\uB77C\uBD09"
+    radius: 0.58
+    color: {r: 1, g: 0.6627451, b: 0.18039216, a: 1}
+    score: 10
+    sprite: {fileID: 21300000, guid: ffe6aeccf549325439c21bf02d0f3085, type: 3}
+  - displayName: "\uAC10"
+    radius: 0.7
+    color: {r: 1, g: 0.49803922, b: 0.15294118, a: 1}
+    score: 15
+    sprite: {fileID: 21300000, guid: d54f45adbb5d6ba4aaa79ada84282185, type: 3}
+  - displayName: "\uC0AC\uACFC"
+    radius: 0.86
+    color: {r: 0.93333334, g: 0.23137255, b: 0.21176471, a: 1}
+    score: 21
+    sprite: {fileID: 21300000, guid: f378d46b727a54b4b8c1d1487efe8e2f, type: 3}
+  - displayName: "\uBC30"
+    radius: 0.98
+    color: {r: 0.9137255, g: 0.8666667, b: 0.41568628, a: 1}
+    score: 28
+    sprite: {fileID: 21300000, guid: 8e65c672fd1eb554da0a1dd80f78f029, type: 3}
+  - displayName: "\uBCF5\uC22D\uC544"
+    radius: 1.14
+    color: {r: 1, g: 0.7058824, b: 0.7607843, a: 1}
+    score: 36
+    sprite: {fileID: 21300000, guid: c38353cf1aa9f82459593c73ef5cfdd9, type: 3}
+  - displayName: "\uD30C\uC778\uC560\uD50C"
+    radius: 1.3
+    color: {r: 0.9647059, g: 0.7764706, b: 0.2509804, a: 1}
+    score: 45
+    sprite: {fileID: 21300000, guid: aa4b014411b827e439e4719f279a1cc8, type: 3}
+  - displayName: "\uBA5C\uB860"
+    radius: 1.56
+    color: {r: 0.61960787, g: 0.85882354, b: 0.43137255, a: 1}
+    score: 55
+    sprite: {fileID: 21300000, guid: 620ad5ad5ad33c14eb93be995996af74, type: 3}
+  - displayName: "\uC218\uBC15"
+    radius: 1.82
+    color: {r: 0.23921569, g: 0.6862745, b: 0.2901961, a: 1}
+    score: 66
+    sprite: {fileID: 21300000, guid: b547c229b1e45784fb09477c2a148ec4, type: 3}
+  spawnableCount: 5
