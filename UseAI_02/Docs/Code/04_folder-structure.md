@@ -2,7 +2,7 @@
 
 ```
 Assets/
-├── _Project/            # 내가 만든 에셋은 전부 여기 (외부 에셋과 분리)
+├── Project/            # 내가 만든 에셋은 전부 여기 (외부 에셋과 분리)
 │   ├── Scripts/
 │   │   ├── Core/        # GameManager, 공용 유틸
 │   │   ├── Player/
