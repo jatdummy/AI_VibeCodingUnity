@@ -24,6 +24,7 @@
 ## 상시 로드 (매 세션 적용)
 
 - @Docs\claude\ClaudeCodeRules.md
+- @Docs\claude\WorkflowRules.md
 - @Docs\TechSpec.md
 
 ## 온디맨드 참조 (매 세션 읽지 않음 - 해당 작업을 할 때만 읽음)
@@ -35,4 +36,4 @@
 
 ### Github Issue 관련
 
-- @Docs\Documentation\Github Issue Rule.md
+- 이슈 등록 권유 / 작성은 `/github-issue` 스킬을 호출해 수행한다. (규칙 원문은 스킬이 안내하는 문서에서 읽는다)
