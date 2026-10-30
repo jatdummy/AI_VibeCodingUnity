@@ -17,23 +17,31 @@
 
 ## 규칙 문서 관리
 
-- 규칙 문서는 `Docs/` 하위 카테고리 폴더(`Claude/`, `Code/`)에 둔다.
-- 규칙 하나는 문서 한 곳에만 적는다(규칙의 단일출저 유지), 규칙이 바뀌면 그 한 곳만 고친다.
+- 규칙 문서는 `Docs/` 하위 카테고리 폴더(`Claude/`, `Code/`, `Documentation/`, `Template/`)에 둔다.
+- 규칙 하나는 문서 한 곳에만 적는다(규칙의 단일출처 유지), 규칙이 바뀌면 그 한 곳만 고친다.
 - 새 문서를 만들면, 매 세션 필요한 것은 "상시 로드"에 `@경로` 로, 특정 작업 때만 필요한 것은 "온디맨드 참조"에 등록한다.
 
 ## 상시 로드 (매 세션 적용)
 
-- @Docs\claude\ClaudeCodeRules.md
-- @Docs\claude\WorkflowRules.md
+- @Docs\Claude\ClaudeCodeRules.md
+- @Docs\Claude\WorkflowRules.md
 - @Docs\TechSpec.md
 
 ## 온디맨드 참조 (매 세션 읽지 않음 - 해당 작업을 할 때만 읽음)
 
 ### 소스코드 작성 시
 
-- @Docs\Code\03_code-convention.md
-- @Docs\Code\04_folder-structure.md
+- @Docs\Code\CodeConvention.md
+- @Docs\Code\FolderStructure.md
 
 ### Github Issue 관련
 
 - 이슈 등록 권유 / 작성은 `/github-issue` 스킬을 호출해 수행한다. (규칙 원문은 스킬이 안내하는 문서에서 읽는다)
+
+### Github PR 관련
+
+- PR 작성은 `/github-pr` 스킬을 호출해 수행한다. (규칙 원문은 스킬이 안내하는 문서에서 읽는다)
+
+### Github Branch 관련
+
+- 브랜치 규칙은 `Docs/Documentation/GithubBranchRule.md`를 참고한다.

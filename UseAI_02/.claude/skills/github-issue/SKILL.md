@@ -16,8 +16,8 @@ description: Github Issue 등록 절차. 사용자가 이슈 등록을 요청하
 | 문서 | 읽을 섹션 | 용도 |
 |---|---|---|
 | `Docs/Claude/WorkflowRules.md` | `1. 업무 유형`, `2. Github Issue` | 권유 조건, 등록 후 행동 |
-| `Docs/Documentation/Github Issue Rule.md` | 전체 (`1. Title` ~ `7. 기타`) | 섹션별 작성 규칙, Label |
-| `Docs/Template/Issue Template.md` | 양식 코드블록 | 이슈 본문 양식 |
+| `Docs/Documentation/GithubIssueRule.md` | 전체 (`1. Title` ~ `7. 기타`) | 섹션별 작성 규칙, Label |
+| `Docs/Template/IssueTemplate.md` | 양식 코드블록 | 이슈 본문 양식 |
 
 - 각 단계에서 표기된 섹션만 읽는다.
 - 원본 문서와 이 스킬의 내용이 다르면, 원본 문서를 따르고 사용자에게 차이를 보고한다.
@@ -45,9 +45,9 @@ description: Github Issue 등록 절차. 사용자가 이슈 등록을 요청하
 
 ## 2. 정보 수집
 
-- `Github Issue Rule.md`의 `2. 배경 / 목적`을 읽고, 해당 섹션에 기재할 내용을 사용자에게 질문한다.
+- `GithubIssueRule.md`의 `2. 배경 / 목적`을 읽고, 해당 섹션에 기재할 내용을 사용자에게 질문한다.
   - 답변을 받지 못하면 이슈를 작성하지 않는다.
-- 나머지 섹션은 `Github Issue Rule.md`의 각 섹션 규칙에 따라 Claude가 초안을 작성한다.
+- 나머지 섹션은 `GithubIssueRule.md`의 각 섹션 규칙에 따라 Claude가 초안을 작성한다.
 - 작성 대상의 코드 / 문서를 확인해야 하는 경우, 읽기만 하며 수정하지 않는다.
 
 **멘트 B : 배경 / 목적 질문**
@@ -63,7 +63,7 @@ description: Github Issue 등록 절차. 사용자가 이슈 등록을 요청하
 
 ## 3. 등록 전 승인
 
-- `Issue Template.md`의 양식으로 본문을 완성하되, 승인 요청에는 아래 **멘트 C** 의 요약만 보여준다.
+- `IssueTemplate.md`의 양식으로 본문을 완성하되, 승인 요청에는 아래 **멘트 C** 의 요약만 보여준다.
 - 사용자가 전문을 요청하면 본문 전체를 보여준다.
 - 사용자의 승인 없이 등록하지 않는다.
 
@@ -89,7 +89,7 @@ description: Github Issue 등록 절차. 사용자가 이슈 등록을 요청하
 ## 4. 등록
 
 - `gh` CLI로 등록한다.
-  - Label이 저장소에 없으면 `Github Issue Rule.md`의 `7. 기타`에 따라 Label을 먼저 생성한다.
+  - Label이 저장소에 없으면 `GithubIssueRule.md`의 `7. 기타`에 따라 Label을 먼저 생성한다.
 - 등록 후 이슈 번호와 링크를 보고한다.
 - 이후 행동(착수명령 대기, Assignees 지정)은 `WorkflowRules.md`의 `2. Github Issue`를 따른다.
 

@@ -1,18 +1,19 @@
-# 03. C# 코드 컨벤션
+# C# 코드 컨벤션
 
-> 기준: 실제 작성 코드(팀 프로젝트 `jatdummy`, 10월 수업 실습)에서 굳어진 습관을 반영했다.
+> 기준: Microsoft C# 공식 가이드를 따르고, 그동안의 코드 작성 습관을 더했다.
 
 ## 1. 네이밍
 
 | 대상 | 규칙 | 예시 |
 |---|---|---|
 | 클래스 / 구조체 | PascalCase | `PlayerController`, `GoldManager` |
-| enum 타입 | `E` + PascalCase | `ETowerType`, `ETileType` |
-| enum 값 | PascalCase | `ETowerType.ArrowTower` |
+| enum 타입 | PascalCase, 단수 명사 (플래그 enum만 복수) | `TowerType`, `TileType` |
+| enum 값 | PascalCase | `TowerType.ArrowTower` |
 | 인터페이스 | `I` + PascalCase | `IDamageable` |
 | 메서드 | PascalCase, 동사로 시작 | `TakeDamage()`, `InstallTower()` |
 | public 프로퍼티 | PascalCase | `Gold`, `IsTopView` |
 | private 필드 | `_` + camelCase | `_moveSpeed`, `_selectedTile` |
+| private static 필드 | `s_` + camelCase | `s_instance` |
 | 지역 변수 / 매개변수 | camelCase | `targetPos`, `amount` |
 | 상수 (`const`, `static readonly`) | PascalCase | `StartGold`, `MaxTowerLevel` |
 | bool | `is / has / can` 접두사 | `_isTopView`, `CanJump` |
@@ -21,31 +22,36 @@
 - 축약어는 피한다. (`plr` ✕ → `player` ○), 단 `Hp`, `UI`, `Id` 같은 관용어는 허용.
 - 스크립트 파일명 = 클래스명. **한 파일에 public 클래스 하나.**
 - 식별자 철자에 주의한다. (`SkillAblity` ✕ → `SkillAbility` ○) 이름은 한 번 퍼지면 고치기 어렵다.
+- 타입을 이름에 넣지 않는다. (`_speedFloat` ✕) 타입은 선언으로, 의미는 이름으로 나타낸다.
 
 ## 2. enum
-- 모든 enum은 `Assets/Project/Scripts/Core/EnumList.cs` **한 파일에 모은다.** 어디서 쓰든 찾는 위치가 하나로 고정된다.
-- enum 타입 위에만 `/// <summary>`로 용도를 적는다. 값마다 달 필요는 없다.
-- "없음"이 필요하면 `None = -1`로 둔다.
+- 모든 enum은 `Assets/Scripts/Core/EnumList.cs` **한 파일에 모은다.** 어디서 쓰든 찾는 위치가 하나로 고정된다.
+- enum 타입 위에만 주석으로 용도를 적는다. 값마다 달 필요는 없다.
+- "없음"이 필요하면 맨 앞에 `None = 0`으로 둔다. 값을 넣지 않은 enum 변수와 새로 추가한 `[SerializeField]` 필드의 기본값이 0이므로 자동으로 "없음"이 된다.
+- enum 값을 배열 인덱스로 쓸 때는 `None`이 0번을 차지하는 것에 주의한다.
 
 ```csharp
-/// <summary> 타워 타입 </summary>
-public enum ETowerType
+// 타워 타입
+public enum TowerType
 {
-    None = -1,
-    ArrowTower = 0,
-    FireTower = 1,
-    IceTower = 2,
+    None = 0,
+    ArrowTower = 1,
+    FireTower = 2,
+    IceTower = 3,
 }
 ```
 
 ## 3. Inspector 노출
 - 필드는 `public`으로 열지 않는다. Inspector 노출은 `[SerializeField] private`을 사용한다.
 - 외부에서 읽어야 하면 프로퍼티로 제공한다.
-- 값의 의미는 **줄 끝 주석**으로 적는다. `[Tooltip]`은 Inspector에서 꼭 봐야 하는 값에만 선택적으로 쓴다.
+- 값의 의미는 필드 **바로 위 줄**에 주석으로 적는다. (9장 규칙)
 
 ```csharp
-[SerializeField] private float _panSpeed = 15f;     // 기본 이동 속도
-[SerializeField] private float _smoothSpeed = 10f;  // 클수록 딱딱, 작을수록 부드럽게
+// 기본 이동 속도(초당 거리)
+[SerializeField] private float _panSpeed = 15f;
+
+// 따라가는 정도(클수록 딱딱함)
+[SerializeField] private float _smoothSpeed = 10f;
 
 public float PanSpeed => _panSpeed;
 ```
@@ -81,7 +87,11 @@ private void Update() => MoveToGoal();
   - ○ 본문이 한 줄이고 바로 아래에 다른 `if`/`else`가 이어지지 않는 경우
   - ✕ `if`–`else`가 섞이거나 본문이 두 줄 이상이면 중괄호를 쓴다.
 - 들여쓰기 공백 4칸.
-- 타입이 분명할 때는 `new()`를 써도 된다. (`private List<Monster> _monsters = new();`) `var`는 쓰지 않는다.
+- 변수 타입과 생성 타입이 같으면 `new()`를 쓴다. (`private List<Monster> _monsters = new();`)
+- `var`는 오른쪽에서 타입이 분명할 때(`new`, 리터럴, 캐스트)만 쓴다.
+  - ○ `var monsters = new List<Monster>();`
+  - ✕ `var gold = GetGold();` → `int gold = GetGold();` (메서드 이름만으로는 타입을 알 수 없다)
+  - `foreach`의 반복 변수는 타입을 적는다. (`foreach (Monster monster in _monsters)`)
 
 ## 7. 파일 인코딩
 - 모든 `.cs` 파일은 **UTF-8**로 저장한다.
@@ -102,9 +112,27 @@ private void Update() => MoveToGoal();
 
 ## 9. 주석
 - 주석은 **한국어**로 작성한다.
-- 메서드 위에는 **한 줄로 역할**을 적는다. (`// 타워 강화`, `// 탑뷰 카메라가 맵 밖으로 못 나가게`)
-- 코드만 봐서 이유를 알기 어려운 곳에는 **"왜"**를 덧붙인다.
-- 다른 사람이 호출할 public 메서드는 사용법을 남긴다. (`// GoldManager.Instance.AddGold() 로 값 넣으면 됨`)
+- `//` 일반 주석만 쓴다. XML 주석(`///`)과 `[Tooltip]`은 쓰지 않는다.
+- 설명할 대상(클래스, 메서드, 필드, enum, 코드 줄)의 **바로 위 줄**에 적는다. 줄 끝에 적지 않는다.
+- **한 줄, 명사형**으로 끝낸다.
+- 코드만 봐서 이유를 알기 어려운 곳에만 이유를 같은 형식으로 남긴다. 코드만 봐도 아는 곳에는 남기지 않는다.
+
+```csharp
+// 게임 전체 골드 관리
+public class GoldManager : MonoBehaviour
+{
+    // 골드 추가 및 변경 이벤트 알림
+    public void AddGold(int amount) { ... }
+
+    // 탑뷰 카메라 맵 밖 이동 방지
+    private void ClampToMapBounds() { ... }
+}
+
+// 같은 프레임 중복 이동 방지
+_stateMachine.ChangeState(_idleState);
+return;
+```
+
 - 표시용 주석:
   - `// TODO:` 나중에 할 일
   - `// FIXME:` 알려진 문제

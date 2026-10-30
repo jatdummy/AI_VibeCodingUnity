@@ -38,6 +38,7 @@
   - 연결된 Issue가 없다면 `2. Github Issue` 단계를 거친다.
   - 사용자가 Issue를 생성하지 않도록 명시한 경우, Issue 단계를 생략한다.
 - 착수 전, 현재 브랜치가 `main`, `Develop`이 아닌지 확인한다. (`CLAUDE.md` 절대 원칙)
+  - 브랜치 규칙은 `Docs/Documentation/GithubBranchRule.md`를 따른다.
 
 ---
 
@@ -88,7 +89,7 @@
     - InputActionReference 기반 플레이어 이동 구현
 
     **생성/수정 파일**
-    - 생성 : `Assets/Project/Scripts/Player/PlayerMovement.cs` (이동 처리)
+    - 생성 : `Assets/Scripts/Player/PlayerMovement.cs` (이동 처리)
 
     **작업 순서**
     1. 이동 스크립트 작성 -> 확인 : 컴파일 에러 없음
@@ -107,7 +108,7 @@
 > 승인받은 브리핑의 작업 범위 안에서만 작업한다.
 
 - 작업 범위는 `Docs/Claude/ClaudeCodeRules.md`의 `작업 범위 규칙`을 따른다.
-- 소스코드 작성 시 `Docs/TechSpec.md`, `Docs/Code/03_code-convention.md`, `Docs/Code/04_folder-structure.md`를 따른다.
+- 소스코드 작성 시 `Docs/TechSpec.md`, `Docs/Code/CodeConvention.md`, `Docs/Code/FolderStructure.md`를 따른다.
 - 아래의 경우, 작업을 멈추고 사용자에게 보고한다.
   1. 브리핑에 없던 파일의 수정이 필요한 경우.
   2. 브리핑의 작업 순서나 방식이 바뀌어야 하는 경우.
@@ -158,10 +159,9 @@
 
 > 사용자가 요청하면 Claude가 작성한다.
 
-- 양식은 `Docs/Template/PR Template.md`를 따른다.
-- 연결된 Issue를 태그한다.
-- 이슈 기반 업무인 경우, PR이 승인되어 merge될 때 `Closes #00`를 사용해 관련 이슈를 closed 처리한다.
-- `확인 사항` 중 사용자가 직접 확인해야 하는 항목 (Unity 실행 테스트, 콘솔 에러 등)은 임의로 체크하지 않는다.
+- PR 작성은 `/github-pr` 스킬을 호출해 수행한다.
+- 변경 파일 목록은 `5. 업무 수행`의 검수 보고를 기준으로 하며, Claude는 Git 명령으로 변경 내역을 조회하지 않는다.
+- 사용자의 승인 없이 PR을 생성하지 않는다.
 
 ---
 
@@ -181,4 +181,4 @@
 
 - 충족되지 않은 항목이 있으면, 별도 Issue로 등록할지 사용자에게 질문한다.
 - Issue Close는 사용자가 결정한다.
-- 이슈가 없은 업무는 이 단계를 생략한다.
+- 이슈가 없는 업무는 이 단계를 생략한다.
