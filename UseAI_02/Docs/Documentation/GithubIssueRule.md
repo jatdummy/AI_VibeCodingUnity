@@ -2,7 +2,7 @@
 
 > Github Issues를 작성할 때의 규칙
 >
-> 이슈 작성 양식은 `@Docs\Template\Issue Template.md` 를 참고.
+> 이슈 작성 양식은 `@Docs\Template\IssueTemplate.md` 를 참고.
 >
 > 해당 문서는 각 섹션에 대한 작성 규칙을 정의한다.
 
@@ -69,7 +69,7 @@
     ## 완료조건 (DoD)
 
     - [ ] `PlayerController` 객체와 `MonsterController` 객체가 `IDamageable` 인터페이스를 통해서만 데미지 판정을 주고받는다.
-    - [ ] `IDamaegable.TakeDamage(DamageInfo info)` 메서드를 통해 공격을 시도한 객체에서 공격을 받는 객체로 `DamageInfo` 구조체가 전달된다.
+    - [ ] `IDamageable.TakeDamage(DamageInfo info)` 메서드를 통해 공격을 시도한 객체에서 공격을 받는 객체로 `DamageInfo` 구조체가 전달된다.
     - [ ] 공격을 받는 객체에서 `DamageInfo` 구조체의 정보를 받아 로그 출력에 성공했다.
     - [ ] 유니티 에디터에서 컴파일 에러 및 Error, Warning 로그가 발생하지 않는다.
     ```

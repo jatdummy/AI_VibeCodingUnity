@@ -1,4 +1,4 @@
-# Issues Templet
+# Issues Template
 
 > Github Issues에 등록할 Issue의 양식.
 >
